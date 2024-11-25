@@ -56,20 +56,39 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, popular = false }) =
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setFormStep(2);
-    setTimeout(() => {
-      setFormStep(3);
-    }, 1500);
-    setTimeout(() => {
-      setIsDialogOpen(false);
-      setFormStep(1);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        date: '',
-        message: ''
-      });
-    }, 3000);
+    const API_URL = 'http://localhost:8000/api/reservas/';
+    fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        nombre: formData.name,
+        email: formData.email,
+        telefono: formData.phone,
+        fecha: formData.date,
+        mensaje: formData.message
+      })
+    })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error(error))
+    .finally(() => {
+      setTimeout(() => {
+        setFormStep(3);
+      }, 1500);
+      setTimeout(() => {
+        setIsDialogOpen(false);
+        setFormStep(1);
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          date: '',
+          message: ''
+        });
+      }, 3000);
+    });
   };
 
   return (
@@ -232,6 +251,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, popular = false }) =
     </>
   );
 };
+
 
 const ServicesSection: React.FC = () => {
   const services: Service[] = [

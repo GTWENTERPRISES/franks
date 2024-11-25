@@ -17,6 +17,7 @@ import ServiceCard from "./components/ServiceCard";
 import Link from "next/link";
 import Image from "next/image";
 import ServicesSection from "./components/ServiceCard";
+import Formulario from "./components/form";
 
 export default function Home() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -348,95 +349,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Enhanced Contact Section */}
-      <section id="contacto" className="py-24 bg-black relative">
-        <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] opacity-10" />
-        <div className="container mx-auto px-6 relative">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div className="space-y-8">
-              <Badge className="bg-yellow-400/10 text-yellow-400">
-                Contacto
-              </Badge>
-              <h2 className="text-4xl font-bold">¿Listo para tu evento?</h2>
-              <p className="text-gray-400 max-w-xl">
-                Cuéntanos sobre tu evento y juntos crearemos una experiencia musical inolvidable.
-                Responderemos a tu consulta en menos de 24 horas.
-              </p>
-
-              <div className="grid gap-6">
-                {[
-                  {
-                    icon: Phone,
-                    title: "Llámanos",
-                    content: "+593 96 949 5311",
-                    link: "tel:+345550123"
-                  },
-                  {
-                    icon: Mail,
-                    title: "Email",
-                    content: "info@djfrank.es",
-                    link: "mailto:info@djfrank.es"
-                  },
-                  {
-                    icon: MapPin,
-                    title: "Ubicación",
-                    content: "La Maná, Cotopaxi",
-                    link: "#"
-                  }
-                ].map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.link}
-                    className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg hover:bg-white/10 transition-colors"
-                  >
-                    <div className="p-3 bg-yellow-400/10 rounded-lg">
-                      <item.icon className="h-6 w-6 text-yellow-400" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium">{item.title}</h3>
-                      <p className="text-gray-400">{item.content}</p>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-
-            <div className="bg-white/5 backdrop-blur-sm p-8 rounded-xl">
-              <form className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="text-sm text-gray-400">Nombre</label>
-                    <Input className="mt-2 bg-white/5 border-white/10 focus:border-yellow-400" />
-                  </div>
-                  <div>
-                    <label className="text-sm text-gray-400">Email</label>
-                    <Input className="mt-2 bg-white/5 border-white/10 focus:border-yellow-400" type="email" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Tipo de Evento</label>
-                  <Input className="mt-2 bg-white/5 border-white/10 focus:border-yellow-400" />
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Fecha del Evento</label>
-                  <Input className="mt-2 bg-white/5 border-white/10 focus:border-yellow-400" type="date" />
-                </div>
-                <div>
-                  <label className="text-sm text-gray-400">Mensaje</label>
-                  <Textarea 
-                    className="mt-2 bg-white/5 border-white/10 focus:border-yellow-400"
-                    rows={4}
-                  />
-                </div>
-                <Button className="w-full bg-yellow-400 text-black hover:bg-yellow-500">
-                  Enviar Mensaje
-                </Button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      
+            <Formulario/>
       {/* Footer */}
 <footer className="py-16 bg-black border-t border-white/10">
   <div className="container mx-auto px-6">
